@@ -6,4 +6,5 @@ function DanhSachNhanVien(){
     this.addNV = function(NV){
         this.DSNV.push(NV)
     }
+    
 }

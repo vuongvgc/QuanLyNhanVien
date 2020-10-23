@@ -10,7 +10,6 @@ function getEl(id){
 
 /**
  * Func1: tạo hàm lấy thông tin từ form
- * event: sau khi click button
  */
 function giveInformation(){
     let maNV = getEl("msnv").value;
@@ -27,20 +26,23 @@ function giveInformation(){
 }
 
 /**
+ * func2: Lưu thông tin vào đối tượng nhân viên
  * Event click button give information
- * Lưu thông tin vào đối tượng nhân viên
  */
 let DSNV = new DanhSachNhanVien();
-let btn = getEl("btnThemNV")
-btn.addEventListener("click", function(){
+getLocalStorage();
+let btnAdd = getEl("btnThemNV")
+btnAdd.addEventListener("click", function(){
     let NV = giveInformation();
     console.log(NV)
     DSNV.addNV(NV);
-    console.log(DSNV);
+    setLocalStorage("mangNV",DSNV.DSNV);    // console.log(DSNV);
     hienThiDanhSach(DSNV.DSNV)
 });
 /**
- * Func2: hiển thị thông tin
+ * Func3: hiển thị thông tin nhân viên trên table
+ * in: mảng DSNV
+ * out: hiển thị trên table
  */
 function hienThiDanhSach(DSSV) {
     let content = "";
@@ -56,4 +58,22 @@ function hienThiDanhSach(DSSV) {
        ` 
     })
     getEl("tableDanhSach").innerHTML = content;
+}
+/**
+ *fun4: Lưu danh sách xuống localstorage
+ * input:keyname, arr
+ * out: save in local storage JSON
+ */
+function setLocalStorage(keyName, arr){
+    localStorage.setItem(keyName, JSON.stringify(arr))
+}
+/**
+ *fun5: Lấy danh sách từ localstorage
+ * input: JSON
+ * out: 
+ */
+function getLocalStorage(){
+    let ds = JSON.parse(localStorage.getItem("mangNV"))
+    DSNV.DSNV = ds;
+    hienThiDanhSach(DSNV.DSNV)
 }
