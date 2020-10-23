@@ -54,6 +54,7 @@ function hienThiDanhSach(DSNV) {
              <td>${nv.emailNV}</td>
              <td>${nv.ngayLam}</td>
              <td>${nv.chucVuNV}</td>
+             <td><button class="btn btn-danger" onClick="deleteNhanVien(${nv.maNV})">Xóa</button></td>
          </tr>
         ` 
      })
@@ -80,4 +81,19 @@ function getLocalStorage(){
         hienThiDanhSach(DSNV.DSNV)
     }
     
+}
+/**
+ *fun6: xóa nhân viên  
+ * input: id onclick from button
+ * out: xóa nhân viên
+ */
+function deleteNhanVien(id){
+    console.log(id);
+    DSNV.findId(id);
+    console.log(DSNV.findId(id));
+    let index = DSNV.DSNV.findIndex(el => el.maNV === id)
+    console.log(index)
+    DSNV.deleteNV(index);
+    setLocalStorage("mangNV",DSNV.DSNV);    // console.log(DSNV);
+    hienThiDanhSach(DSNV.DSNV)
 }
