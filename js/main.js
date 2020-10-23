@@ -44,20 +44,20 @@ btnAdd.addEventListener("click", function(){
  * in: mảng DSNV
  * out: hiển thị trên table
  */
-function hienThiDanhSach(DSSV) {
+function hienThiDanhSach(DSNV) {
     let content = "";
-    DSSV.map(nv => {
-       content  += `
-       <tr>
-            <td>${nv.maNV}</td>
-            <td>${nv.hoTenNV}</td>
-            <td>${nv.emailNV}</td>
-            <td>${nv.ngayLam}</td>
-            <td>${nv.chucVuNV}</td>
-        </tr>
-       ` 
-    })
-    getEl("tableDanhSach").innerHTML = content;
+    DSNV.map(nv => {
+        content  += `
+        <tr>
+             <td>${nv.maNV}</td>
+             <td>${nv.hoTenNV}</td>
+             <td>${nv.emailNV}</td>
+             <td>${nv.ngayLam}</td>
+             <td>${nv.chucVuNV}</td>
+         </tr>
+        ` 
+     })
+     getEl("tableDanhSach").innerHTML = content;
 }
 /**
  *fun4: Lưu danh sách xuống localstorage
@@ -68,12 +68,16 @@ function setLocalStorage(keyName, arr){
     localStorage.setItem(keyName, JSON.stringify(arr))
 }
 /**
- *fun5: Lấy danh sách từ localstorage
+ *fun5: Lấy danh sách từ localstorage 
  * input: JSON
- * out: 
+ * out: Arr
+ * method
  */
 function getLocalStorage(){
-    let ds = JSON.parse(localStorage.getItem("mangNV"))
-    DSNV.DSNV = ds;
-    hienThiDanhSach(DSNV.DSNV)
+    if(localStorage.getItem("mangNV") !== null){
+        let ds = JSON.parse(localStorage.getItem("mangNV"))
+        DSNV.DSNV = ds;
+        hienThiDanhSach(DSNV.DSNV)
+    }
+    
 }
