@@ -91,7 +91,7 @@ function deleteNhanVien(id){
     console.log(id);
     DSNV.findId(id);
     console.log(DSNV.findId(id));
-    let index = DSNV.DSNV.findIndex(el => el.maNV === id)
+    let index = DSNV.DSNV.findIndex(el => el.maNV == id)
     console.log(index)
     DSNV.deleteNV(index);
     setLocalStorage("mangNV",DSNV.DSNV);    // console.log(DSNV);
