@@ -89,11 +89,11 @@ function getLocalStorage(){
  */
 function deleteNhanVien(id){
     console.log(id);
-    DSNV.findId(id);
-    console.log(DSNV.findId(id));
-    let index = DSNV.DSNV.findIndex(el => el.maNV == id)
-    console.log(index)
-    DSNV.deleteNV(index);
+    // DSNV.findId(id);
+    // console.log(DSNV.findId(id));
+    // let index = DSNV.DSNV.findIndex(el => el.maNV == id)
+    // console.log(index)
+    DSNV.deleteNV(id);
     setLocalStorage("mangNV",DSNV.DSNV);    // console.log(DSNV);
     hienThiDanhSach(DSNV.DSNV)
 }
