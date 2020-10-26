@@ -7,6 +7,7 @@
 function getEl(id){
     return document.getElementById(id)
 }
+
 /**
  * Func:Xử lý form khi thêm thông tin mới
  */
@@ -18,6 +19,7 @@ getEl("btnThem").addEventListener("click", function(){
     getEl("btnCapNhat").style.display = "none";
 
 })
+
 /**
  * Func1: tạo hàm lấy thông tin từ form
  */
@@ -49,6 +51,7 @@ btnAdd.addEventListener("click", function(){
     setLocalStorage("mangNV",DSNV.DSNV);    // console.log(DSNV);
     hienThiDanhSach(DSNV.DSNV)
 });
+
 /**
  * Func3: hiển thị thông tin nhân viên trên table
  * in: mảng DSNV
@@ -73,6 +76,7 @@ function hienThiDanhSach(DSNV) {
      })
      getEl("tableDanhSach").innerHTML = content;
 }
+
 /**
  *fun4: Lưu danh sách xuống localstorage
  * input:keyname, arr
@@ -81,6 +85,7 @@ function hienThiDanhSach(DSNV) {
 function setLocalStorage(keyName, arr){
     localStorage.setItem(keyName, JSON.stringify(arr))
 }
+
 /**
  *fun5: Lấy danh sách từ localstorage 
  * input: JSON
@@ -96,6 +101,7 @@ function getLocalStorage(){
     }
     
 }
+
 /**
  *fun6: xóa nhân viên  
  * input: id onclick from button
@@ -103,19 +109,19 @@ function getLocalStorage(){
  */
 function deleteNhanVien(id){
     // console.log(id);
-    // DSNV.findId(id);
-    // console.log(DSNV.findId(id));
-    // let index = DSNV.DSNV.findIndex(el => el.maNV == id)
-    // console.log(index)
+    // xóa nhân viên 
     DSNV.deleteNV(id);
+    // lưu trử lại
     setLocalStorage("mangNV",DSNV.DSNV);    // console.log(DSNV);
+    // hiển thị lại 
     hienThiDanhSach(DSNV.DSNV)
 }
+
 /**
  * Func7: update Nhân Viên
+ * event: click button update
  * input: id
- * event: button update
- * out: update infor nhân viên
+ * out: update information nhân viên
  */
 function updateNhanVien(id){
     // console.log(id);
@@ -124,10 +130,10 @@ function updateNhanVien(id){
     getEl("btnCapNhat").style.display = "block";
     let index = DSNV.findId(id);
     let NV;
+    // hiển thị thông tin lên modal 
     if(index !== -1){
         NV = DSNV.DSNV[index];
         // console.log(DSNV.DSNV[index]);
-        // console.log(NV.hoTenNV)
         getEl("msnv").value = NV.maNV;
         getEl("msnv").setAttribute("disabled", true);
         getEl("name").value = NV.hoTenNV;
@@ -137,9 +143,13 @@ function updateNhanVien(id){
         getEl("chucvu").value = NV.chucVuNV;
 
     }
+    // cập nhật thông tin 
     getEl("btnCapNhat").addEventListener("click", function(){
+        // cập nhât 
         DSNV.updateNV(giveInformation());
-        setLocalStorage("mangNV",DSNV.DSNV);    // console.log(DSNV);
+        // lưu lại 
+        setLocalStorage("mangNV",DSNV.DSNV);
+        // hiển thị lại     
         hienThiDanhSach(DSNV.DSNV)
     })
 }
