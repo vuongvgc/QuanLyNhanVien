@@ -31,6 +31,7 @@ function giveInformation(){
     let ngaylam = getEl("datepicker").value;
     let chucvuNV = getEl("chucvu").value;
     // console.log(maNV, hoTenNV, email, password, ngaylam, chucvuNV)
+    
     // thể hiện của đối tượng nhân viên
     let NV = new NhanVien(maNV, hoTenNV, email, password, ngaylam, chucvuNV);
     // console.log(NV);
@@ -47,9 +48,26 @@ let btnAdd = getEl("btnThemNV")
 btnAdd.addEventListener("click", function(){
     let NV = giveInformation();
     // console.log(NV);
-    DSNV.addNV(NV);
-    setLocalStorage("mangNV",DSNV.DSNV);    // console.log(DSNV);
-    hienThiDanhSach(DSNV.DSNV)
+    // xử lý kiểm tra thông tin 
+    let isValid = true;
+    // kiểm tra mã nhân viên : nhân viên không được rỗng
+    let validationCheckForm = new ValidationCheckForm();
+    // debugger;
+    isValid &= validationCheckForm.isFill(NV.maNV,"tbMaNV", "Không được để trống" )     
+    // isValid mới   = isValid cũ & validationCheckForm
+    isValid &= validationCheckForm.isFill(NV.hoTenNV,"tbTen", "Không được để trống" ) 
+    isValid &= validationCheckForm.isFill(NV.emailNV,"tbEmail", "Không được để trống" ) 
+    isValid &= validationCheckForm.isFill(NV.password,"tbMatKhau", "Không được để trống" ) 
+    isValid &= validationCheckForm.isFill(NV.ngayLam,"tbNgay", "Không được để trống" ) 
+    isValid &= validationCheckForm.isFill(NV.chucVuNV,"tbChucVu", "Không được để trống") 
+    // tất cả thông tin nhân viên đều hợp lệ 
+
+    if(isValid == true) {
+        DSNV.addNV(NV);
+        setLocalStorage("mangNV",DSNV.DSNV);    // console.log(DSNV);
+        hienThiDanhSach(DSNV.DSNV)
+    }
+    
 });
 
 /**
@@ -153,3 +171,4 @@ function updateNhanVien(id){
         hienThiDanhSach(DSNV.DSNV)
     })
 }
+
