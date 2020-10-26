@@ -55,8 +55,8 @@ function hienThiDanhSach(DSNV) {
              <td>${nv.ngayLam}</td>
              <td>${nv.chucVuNV}</td>
              <td>
-                <button class="btn btn-danger" onClick="deleteNhanVien(${nv.maNV})">Xóa</button>
-                <button class="btn btn-success" onClick="updateNhanVien(${nv.maNV})" data-toggle="modal" data-target="#myModal">Cập Nhật</button>
+                <button class="btn btn-danger" onClick=deleteNhanVien("${nv.maNV}")>Xóa</button>
+                <button class="btn btn-success" onClick=updateNhanVien("${nv.maNV}") data-toggle="modal" data-target="#myModal">Cập Nhật</button>
              </td>
         </tr>
         ` 
@@ -81,7 +81,8 @@ function getLocalStorage(){
     if(localStorage.getItem("mangNV") !== null){
         let ds = JSON.parse(localStorage.getItem("mangNV"))
         DSNV.DSNV = ds;
-        hienThiDanhSach(DSNV.DSNV)
+        hienThiDanhSach(DSNV.DSNV);
+        
     }
     
 }
@@ -99,4 +100,32 @@ function deleteNhanVien(id){
     DSNV.deleteNV(id);
     setLocalStorage("mangNV",DSNV.DSNV);    // console.log(DSNV);
     hienThiDanhSach(DSNV.DSNV)
+}
+/**
+ * Func7: update Nhân Viên
+ * input: id
+ * event: button update
+ * out: update infor nhân viên
+ */
+function updateNhanVien(id){
+    // console.log(id);
+    let index = DSNV.findId(id);
+    let NV;
+    if(index !== -1){
+        NV = DSNV.DSNV[index];
+        // console.log(DSNV.DSNV[index]);
+        // console.log(NV.hoTenNV)
+        getEl("msnv").value = NV.maNV;
+        getEl("name").value = NV.hoTenNV;
+        getEl("email").value = NV.emailNV;
+        getEl("password").value = NV.password;
+        getEl("datepicker").value = NV.ngayLam;
+        getEl("chucvu").value = NV.chucVuNV;
+    }
+    getEl("btnCapNhat").addEventListener("click", function(){
+        console.log("Cap nhat");
+        DSNV.DSNV[index] = giveInformation();
+        setLocalStorage("mangNV",DSNV.DSNV);    // console.log(DSNV);
+        hienThiDanhSach(DSNV.DSNV)
+    })
 }
