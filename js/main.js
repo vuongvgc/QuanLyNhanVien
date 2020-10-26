@@ -12,6 +12,8 @@ function getEl(id){
  */
 getEl("btnThem").addEventListener("click", function(){
     getEl("msnv").removeAttribute("disabled");
+    getEl("formNhanVien").reset();
+
 })
 /**
  * Func1: tạo hàm lấy thông tin từ form
