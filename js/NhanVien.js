@@ -16,5 +16,5 @@ function NhanVien(ma, hoTen, email, password, ngay, chucVu ){
     this.emailNV = email;
     this.password = password;
     this.ngayLam = ngay;
-    this.chucVuNV = chucVu
+    this.chucVuNV = chucVu;
 }

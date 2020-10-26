@@ -54,8 +54,11 @@ function hienThiDanhSach(DSNV) {
              <td>${nv.emailNV}</td>
              <td>${nv.ngayLam}</td>
              <td>${nv.chucVuNV}</td>
-             <td><button class="btn btn-danger" onClick="deleteNhanVien(${nv.maNV})">Xóa</button></td>
-         </tr>
+             <td>
+                <button class="btn btn-danger" onClick="deleteNhanVien(${nv.maNV})">Xóa</button>
+                <button class="btn btn-success" onClick="updateNhanVien(${nv.maNV})" data-toggle="modal" data-target="#myModal">Cập Nhật</button>
+             </td>
+        </tr>
         ` 
      })
      getEl("tableDanhSach").innerHTML = content;
