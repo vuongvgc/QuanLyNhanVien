@@ -7,7 +7,12 @@
 function getEl(id){
     return document.getElementById(id)
 }
-
+/**
+ * Func:Xử lý form khi thêm thông tin mới
+ */
+getEl("btnThem").addEventListener("click", function(){
+    getEl("msnv").removeAttribute("disabled");
+})
 /**
  * Func1: tạo hàm lấy thông tin từ form
  */
@@ -116,6 +121,7 @@ function updateNhanVien(id){
         // console.log(DSNV.DSNV[index]);
         // console.log(NV.hoTenNV)
         getEl("msnv").value = NV.maNV;
+        getEl("msnv").setAttribute("disabled", true);
         getEl("name").value = NV.hoTenNV;
         getEl("email").value = NV.emailNV;
         getEl("password").value = NV.password;
