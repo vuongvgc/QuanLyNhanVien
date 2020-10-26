@@ -55,7 +55,7 @@ btnAdd.addEventListener("click", function(){
     // kiểm tra mã nhân viên : nhân viên không được rỗng và trùng 
     isValid &= validationCheckForm.isFill(NV.maNV,"tbMaNV", "Không được để trống" ) && validationCheckForm.isIdSame(NV.maNV, DSNV.DSNV,"tbMaNV", "mã  nhân viên bị trùng")    
     // isValid mới   = isValid cũ & validationCheckForm
-    isValid &= validationCheckForm.isFill(NV.hoTenNV,"tbTen", "Không được để trống" ) 
+    isValid &= validationCheckForm.isFill(NV.hoTenNV,"tbTen", "Không được để trống" )  && validationCheckForm.isNameHaveNumber(NV.hoTenNV,"tbTen", "Tên không được chứa số" ) 
     isValid &= validationCheckForm.isFill(NV.emailNV,"tbEmail", "Không được để trống" ) 
     isValid &= validationCheckForm.isFill(NV.password,"tbMatKhau", "Không được để trống" ) 
     isValid &= validationCheckForm.isFill(NV.ngayLam,"tbNgay", "Không được để trống" ) 

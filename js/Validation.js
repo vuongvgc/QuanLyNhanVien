@@ -49,4 +49,36 @@ function ValidationCheckForm (){
             return true
         }
     }
+    /**
+     * Kiểm tra tên
+     * input: {dữ liệu từ input id} value 
+     * input: {id thông báo} spanID  
+     * input: {tin nhắn thông báo} message  
+     * output: Boolean
+     */
+    this.isNameHaveNumber = function(value, spanID,message) {
+        // let regex = new RegExp("([0-9A-ZẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴ']+\\s?\\b){2,}");
+        var regex = new RegExp(
+            "^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
+              "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
+              "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$"
+          );
+        console.log(regex.test(value))
+        console.log(value);
+        if(regex.test(value)){
+            // nếu sai
+            // thông báo lỗi và hiển thị 
+            getEl(spanID).innerHTML = message;
+            getEl(spanID).style.display = "block";
+            // trả về true false 
+            return false
+        }else{
+            // nếu đúng
+            // xóa thông báo lỗi và ẩn đi 
+            getEl(spanID).innerHTML = " ";
+            getEl(spanID).style.display = "none"
+            // trả về true false 
+            return true
+        }
+    }
 }
