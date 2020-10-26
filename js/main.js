@@ -138,8 +138,7 @@ function updateNhanVien(id){
 
     }
     getEl("btnCapNhat").addEventListener("click", function(){
-        console.log("Cap nhat");
-        DSNV.DSNV[index] = giveInformation();
+        DSNV.updateNV(giveInformation());
         setLocalStorage("mangNV",DSNV.DSNV);    // console.log(DSNV);
         hienThiDanhSach(DSNV.DSNV)
     })

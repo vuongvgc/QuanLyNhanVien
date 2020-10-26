@@ -12,5 +12,11 @@ function DanhSachNhanVien(){
     this.deleteNV = function(id){
         this.DSNV.splice(this.findId(id), 1)
     }
+    this.updateNV = function(nv){
+        let index = this.findId(nv.maNV);
+        if(index != -1){
+            this.DSNV[index] = nv
+        }
+    }
     
 }
