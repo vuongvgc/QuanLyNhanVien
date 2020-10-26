@@ -50,10 +50,10 @@ btnAdd.addEventListener("click", function(){
     // console.log(NV);
     // xử lý kiểm tra thông tin 
     let isValid = true;
-    // kiểm tra mã nhân viên : nhân viên không được rỗng
     let validationCheckForm = new ValidationCheckForm();
     // debugger;
-    isValid &= validationCheckForm.isFill(NV.maNV,"tbMaNV", "Không được để trống" )     
+    // kiểm tra mã nhân viên : nhân viên không được rỗng và trùng 
+    isValid &= validationCheckForm.isFill(NV.maNV,"tbMaNV", "Không được để trống" ) && validationCheckForm.isIdSame(NV.maNV, DSNV.DSNV,"tbMaNV", "mã  nhân viên bị trùng")    
     // isValid mới   = isValid cũ & validationCheckForm
     isValid &= validationCheckForm.isFill(NV.hoTenNV,"tbTen", "Không được để trống" ) 
     isValid &= validationCheckForm.isFill(NV.emailNV,"tbEmail", "Không được để trống" ) 
@@ -61,7 +61,7 @@ btnAdd.addEventListener("click", function(){
     isValid &= validationCheckForm.isFill(NV.ngayLam,"tbNgay", "Không được để trống" ) 
     isValid &= validationCheckForm.isFill(NV.chucVuNV,"tbChucVu", "Không được để trống") 
     // tất cả thông tin nhân viên đều hợp lệ 
-
+    console.log(isValid)
     if(isValid == true) {
         DSNV.addNV(NV);
         setLocalStorage("mangNV",DSNV.DSNV);    // console.log(DSNV);
