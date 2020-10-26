@@ -13,6 +13,9 @@ function getEl(id){
 getEl("btnThem").addEventListener("click", function(){
     getEl("msnv").removeAttribute("disabled");
     getEl("formNhanVien").reset();
+    // xử lý button 
+    getEl("btnThemNV").style.display = "block"; 
+    getEl("btnCapNhat").style.display = "none";
 
 })
 /**
@@ -41,7 +44,7 @@ getLocalStorage();
 let btnAdd = getEl("btnThemNV")
 btnAdd.addEventListener("click", function(){
     let NV = giveInformation();
-    console.log(NV)
+    // console.log(NV);
     DSNV.addNV(NV);
     setLocalStorage("mangNV",DSNV.DSNV);    // console.log(DSNV);
     hienThiDanhSach(DSNV.DSNV)
@@ -99,7 +102,7 @@ function getLocalStorage(){
  * out: xóa nhân viên
  */
 function deleteNhanVien(id){
-    console.log(id);
+    // console.log(id);
     // DSNV.findId(id);
     // console.log(DSNV.findId(id));
     // let index = DSNV.DSNV.findIndex(el => el.maNV == id)
@@ -116,6 +119,9 @@ function deleteNhanVien(id){
  */
 function updateNhanVien(id){
     // console.log(id);
+    // xử lý button 
+    getEl("btnThemNV").style.display = "none"; 
+    getEl("btnCapNhat").style.display = "block";
     let index = DSNV.findId(id);
     let NV;
     if(index !== -1){
@@ -129,6 +135,7 @@ function updateNhanVien(id){
         getEl("password").value = NV.password;
         getEl("datepicker").value = NV.ngayLam;
         getEl("chucvu").value = NV.chucVuNV;
+
     }
     getEl("btnCapNhat").addEventListener("click", function(){
         console.log("Cap nhat");
