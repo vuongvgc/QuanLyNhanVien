@@ -68,17 +68,17 @@ function ValidationCheckForm (){
         if(regex.test(value)){
             // nếu sai
             // thông báo lỗi và hiển thị 
-            getEl(spanID).innerHTML = message;
-            getEl(spanID).style.display = "block";
-            // trả về true false 
-            return false
-        }else{
-            // nếu đúng
-            // xóa thông báo lỗi và ẩn đi 
             getEl(spanID).innerHTML = " ";
             getEl(spanID).style.display = "none"
             // trả về true false 
             return true
+        }else{
+            // nếu đúng
+            // xóa thông báo lỗi và ẩn đi 
+            getEl(spanID).innerHTML = message;
+            getEl(spanID).style.display = "block";
+            // trả về true false 
+            return false
         }
     }
 }
