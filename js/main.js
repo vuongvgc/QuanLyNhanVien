@@ -59,7 +59,7 @@ btnAdd.addEventListener("click", function(){
     isValid &= validationCheckForm.isFill(NV.emailNV,"tbEmail", "Không được để trống" ) && validationCheckForm.checkEmail(NV.emailNV, "tbEmail", "Email không hợp lệ:")
     isValid &= validationCheckForm.isFill(NV.password,"tbMatKhau", "Không được để trống" ) && validationCheckForm.checkPassword(NV.password, "tbMatKhau", "PassWord không hợp lệ", 6, 8)
     isValid &= validationCheckForm.isFill(NV.ngayLam,"tbNgay", "Không được để trống" ) 
-    isValid &= validationCheckForm.isFill(NV.chucVuNV,"tbChucVu", "Không được để trống") 
+    isValid &= validationCheckForm.checkChucVu("chucvu","tbChucVu", "Không được để trống")  
     // tất cả thông tin nhân viên đều hợp lệ 
     console.log(isValid)
     if(isValid == true) {

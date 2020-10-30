@@ -102,14 +102,34 @@ function ValidationCheckForm (){
         }
     }
     /**
-     * Kiểm tra password
+     * Kiểm tra độ dài password
      * input: {dữ liệu từ input id} value 
      * input: {id thông báo} spanID  
-     * input: {tin nhắn thông báo} message  
+     * input: {tin nhắn thông báo} message
+     * input: min max  
      * output: Boolean
      */
     this.checkPassword = function(value, spanID, message, min, max){
         if(value.length >= min && value.length <= max){
+            getEl(spanID).innerHTML = " ";
+            getEl(spanID).style.display = "none";
+            return true
+        }else {
+            getEl(spanID).innerHTML = message ;
+            getEl(spanID).style.display = "block"
+            return false;
+        }
+    }
+    /**
+     * Kiểm tra độ dài password
+     * input: {dữ liệu từ input id} value 
+     * input: {id thông báo} spanID  
+     * input: {tin nhắn thông báo} message
+     * input: min max  
+     * output: Boolean
+     */
+    this.checkChucVu = function(selectID, spanID, message){
+        if(getEl(selectID).selectedIndex != 0){
             getEl(spanID).innerHTML = " ";
             getEl(spanID).style.display = "none";
             return true
