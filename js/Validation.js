@@ -122,11 +122,12 @@ function ValidationCheckForm (){
     }
     /**
      * Kiểm tra độ dài password
-     * input: {dữ liệu từ input id} value 
+     * input: lấy id để check index của option
      * input: {id thông báo} spanID  
      * input: {tin nhắn thông báo} message
      * input: min max  
      * output: Boolean
+     * description: không so sánh cụm từ vì dễ bị đổi.  nên sử dụng SelectedID để lấy index nếu index lớn hơn 0 thì đúng
      */
     this.checkChucVu = function(selectID, spanID, message){
         if(getEl(selectID).selectedIndex != 0){
