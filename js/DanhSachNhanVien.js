@@ -41,9 +41,9 @@ DanhSachNhanVien.prototype.searchNhanVien = function(keywords){
         if(hoTenNV.indexOf(keywords) != -1){
             mangKQ.push(item);
         }else {
-            console.log("không tìm được");
+            // console.log("không tìm được");
         }
     })
-    console.log(mangKQ);
+    // console.log(mangKQ);
     return mangKQ;
 }

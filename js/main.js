@@ -184,8 +184,8 @@ function updateNhanVien(id){
  * out: update information nhân viên
  */
 getEl("btnTimNV").addEventListener("click", function(){
-    let keySearch = getEl("searchName").value;
-    console.log(keySearch);
+    let keySearch = getEl("searchName").value.trim();
+    // console.log(keySearch);
     if(keySearch != ""){
         let SearchDSNV = DSNV.searchNhanVien(keySearch);
         hienThiDanhSach(SearchDSNV)
@@ -193,4 +193,7 @@ getEl("btnTimNV").addEventListener("click", function(){
         hienThiDanhSach(DSNV.DSNV)
     }
 })
+// getEl("searchName").addEventListener("change", function(){
+    
+// })
 
