@@ -65,7 +65,8 @@ btnAdd.addEventListener("click", function(){
     if(isValid == true) {
         DSNV.addNV(NV);
         setLocalStorage("mangNV",DSNV.DSNV);    // console.log(DSNV);
-        hienThiDanhSach(DSNV.DSNV)
+        hienThiDanhSach(DSNV.DSNV);
+        getEl("formNhanVien").reset();
     }
     
 });
