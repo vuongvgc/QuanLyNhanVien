@@ -178,8 +178,8 @@ function updateNhanVien(id){
     })
 }
 /**
- * Func8: search Nhân Viên
- * event: click button update
+ * Func8: search Nhân Viên : 
+ * event: click button search
  * input: id
  * out: update information nhân viên
  */
@@ -193,7 +193,20 @@ getEl("btnTimNV").addEventListener("click", function(){
         hienThiDanhSach(DSNV.DSNV)
     }
 })
-// getEl("searchName").addEventListener("change", function(){
-    
-// })
 
+// thử sử dụng replace xóa khoảng cách trước vào sau của chuổi nếu từ khóa có khoảng cách ở giữa
+
+/**
+ * Func8: search Nhân Viên : 
+ * event: change input search
+ * input: id
+ * out: update information nhân viên
+ */
+// keyup: đè xong dỡ ra
+// keydown: đè xong 
+getEl("searchName").addEventListener("keyup", function(){
+    let keySearch = getEl("searchName").value.trim();
+    // console.log(keySearch);
+    let SearchDSNV = DSNV.searchNhanVien(keySearch);
+    hienThiDanhSach(SearchDSNV);
+})
