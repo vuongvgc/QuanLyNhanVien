@@ -81,4 +81,42 @@ function ValidationCheckForm (){
             return false
         }
     }
+    /**
+     * Kiểm tra Email
+     * input: {dữ liệu từ input id} value 
+     * input: {id thông báo} spanID  
+     * input: {tin nhắn thông báo} message  
+     * output: Boolean
+     */
+    this.checkEmail = function(value, spanID, message){
+        console.log(message);
+        var regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+        if(value.match(regex)){
+            getEl(spanID).innerHTML = " ";
+            getEl(spanID).style.display = "none";
+            return true
+        }else {
+            getEl(spanID).innerHTML = message ;
+            getEl(spanID).style.display = "block"
+            return false;
+        }
+    }
+    /**
+     * Kiểm tra password
+     * input: {dữ liệu từ input id} value 
+     * input: {id thông báo} spanID  
+     * input: {tin nhắn thông báo} message  
+     * output: Boolean
+     */
+    this.checkPassword = function(value, spanID, message, min, max){
+        if(value.length >= min && value.length <= max){
+            getEl(spanID).innerHTML = " ";
+            getEl(spanID).style.display = "none";
+            return true
+        }else {
+            getEl(spanID).innerHTML = message ;
+            getEl(spanID).style.display = "block"
+            return false;
+        }
+    }
 }

@@ -56,8 +56,8 @@ btnAdd.addEventListener("click", function(){
     isValid &= validationCheckForm.isFill(NV.maNV,"tbMaNV", "Không được để trống" ) && validationCheckForm.isIdSame(NV.maNV, DSNV.DSNV,"tbMaNV", "mã  nhân viên bị trùng")    
     // isValid mới   = isValid cũ & validationCheckForm
     isValid &= validationCheckForm.isFill(NV.hoTenNV,"tbTen", "Không được để trống" )  && validationCheckForm.isNameHaveNumber(NV.hoTenNV,"tbTen", "Tên không được chứa số" ) 
-    isValid &= validationCheckForm.isFill(NV.emailNV,"tbEmail", "Không được để trống" ) 
-    isValid &= validationCheckForm.isFill(NV.password,"tbMatKhau", "Không được để trống" ) 
+    isValid &= validationCheckForm.isFill(NV.emailNV,"tbEmail", "Không được để trống" ) && validationCheckForm.checkEmail(NV.emailNV, "tbEmail", "Email không hợp lệ:")
+    isValid &= validationCheckForm.isFill(NV.password,"tbMatKhau", "Không được để trống" ) && validationCheckForm.checkPassword(NV.password, "tbMatKhau", "PassWord không hợp lệ", 6, 8)
     isValid &= validationCheckForm.isFill(NV.ngayLam,"tbNgay", "Không được để trống" ) 
     isValid &= validationCheckForm.isFill(NV.chucVuNV,"tbChucVu", "Không được để trống") 
     // tất cả thông tin nhân viên đều hợp lệ 
@@ -171,4 +171,5 @@ function updateNhanVien(id){
         hienThiDanhSach(DSNV.DSNV)
     })
 }
+
 
