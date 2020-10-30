@@ -189,6 +189,8 @@ getEl("btnTimNV").addEventListener("click", function(){
     if(keySearch != ""){
         let SearchDSNV = DSNV.searchNhanVien(keySearch);
         hienThiDanhSach(SearchDSNV)
+    }else {
+        hienThiDanhSach(DSNV.DSNV)
     }
 })
 
