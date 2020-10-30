@@ -55,10 +55,15 @@ btnAdd.addEventListener("click", function(){
     // kiểm tra mã nhân viên : nhân viên không được rỗng và trùng 
     isValid &= validationCheckForm.isFill(NV.maNV,"tbMaNV", "Không được để trống" ) && validationCheckForm.isIdSame(NV.maNV, DSNV.DSNV,"tbMaNV", "mã  nhân viên bị trùng")    
     // isValid mới   = isValid cũ & validationCheckForm
+    // kiểm tra tên 
     isValid &= validationCheckForm.isFill(NV.hoTenNV,"tbTen", "Không được để trống" )  && validationCheckForm.isNameHaveNumber(NV.hoTenNV,"tbTen", "Tên không được chứa số" ) 
+    // kiểm tra email
     isValid &= validationCheckForm.isFill(NV.emailNV,"tbEmail", "Không được để trống" ) && validationCheckForm.checkEmail(NV.emailNV, "tbEmail", "Email không hợp lệ:")
+    // kiểm tra password 
     isValid &= validationCheckForm.isFill(NV.password,"tbMatKhau", "Không được để trống" ) && validationCheckForm.checkPassword(NV.password, "tbMatKhau", "PassWord không hợp lệ", 6, 8)
+    // kiểm tra ngày làm 
     isValid &= validationCheckForm.isFill(NV.ngayLam,"tbNgay", "Không được để trống" ) 
+    // kiểm tra chức vụ 
     isValid &= validationCheckForm.checkChucVu("chucvu","tbChucVu", "Không được để trống")  
     // tất cả thông tin nhân viên đều hợp lệ 
     console.log(isValid)
@@ -172,5 +177,18 @@ function updateNhanVien(id){
         hienThiDanhSach(DSNV.DSNV)
     })
 }
-
+/**
+ * Func8: search Nhân Viên
+ * event: click button update
+ * input: id
+ * out: update information nhân viên
+ */
+getEl("btnTimNV").addEventListener("click", function(){
+    let keySearch = getEl("searchName").value;
+    console.log(keySearch);
+    if(keySearch != ""){
+        let SearchDSNV = DSNV.searchNhanVien(keySearch);
+        hienThiDanhSach(SearchDSNV)
+    }
+})
 

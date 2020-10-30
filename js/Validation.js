@@ -50,8 +50,9 @@ function ValidationCheckForm (){
         }
     }
     /**
-     * Kiểm tra tên
+     * Kiểm tra tên có số hay không
      * input: {dữ liệu từ input id} value 
+     * input: mãng chứa value
      * input: {id thông báo} spanID  
      * input: {tin nhắn thông báo} message  
      * output: Boolean
